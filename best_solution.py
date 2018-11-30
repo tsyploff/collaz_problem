@@ -16,15 +16,14 @@ def collaz_sequence_len(n):
         return 1
     elif n in cashe_collaz:
         return cashe_collaz[n]
+    elif n%2 == 0:
+        s = 1 + collaz_sequence_len(n//2)
+        cashe_collaz[n] = s
+        return s
     else:
-        if n%2 == 0:
-            s = 1 + collaz_sequence_len(n//2)
-            cashe_collaz[n] = s
-            return s
-        else:
-            s = 1 + collaz_sequence_len(3*n+1)
-            cashe_collaz[n] = s
-            return s
+        s = 1 + collaz_sequence_len(3*n+1)
+        cashe_collaz[n] = s
+        return s
 
 def longest_by_collaz_sequence(n):
     '''Ищет число с самой длинной сиракузской последовательностью
